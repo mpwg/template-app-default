@@ -13,7 +13,6 @@ updates:
     labels:
       - "dependencies"
       - "swift"
-      - "dotnet"
     commit-message:
       prefix: "swift"
       include: "scope"
