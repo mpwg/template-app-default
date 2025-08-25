@@ -1,8 +1,10 @@
-# Brixie
+# template
 
-Brixie is a modern, native iOS and Android app for rebrickable.com. Experience seamless LEGO set and part discovery, detailed information, and favorites management with offline caching capabilities.
+edit me
 
-**Website:** [https://brixie.net](https://brixie.net)
+
+
+**Website:**
 
 ## Supported Platforms
 
