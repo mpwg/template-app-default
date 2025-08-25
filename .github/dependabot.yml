@@ -1,15 +1,97 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Dependabot configuration for Brixie
+# Automatically updates dependencies across all platforms
 
 version: 2
 updates:
-  - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/android" # Location of package manifests
+  # Swift
+  - package-ecosystem: "swift"
+    directory: "/ios"
     schedule:
-      interval: "weekly"
-  - package-ecosystem: "swift" # See documentation for possible values
-    directory: "/ios" # Location of package manifests
+      interval: "daily"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "swift"
+      - "dotnet"
+    commit-message:
+      prefix: "seift"
+      include: "scope"
+    
+
+  # Android Dependencies (Gradle)
+  - package-ecosystem: "gradle"
+    directory: "/android"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "android"
+      - "gradle"
+    commit-message:
+      prefix: "android"
+      include: "scope"
+    groups:
+      androidx:
+        patterns:
+          - "androidx.*"
+      compose:
+        patterns:
+          - "androidx.compose*"
+          - "*compose*"
+          - "io.coil-kt.coil3*"
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+          - "*kotlin*"
+      networking:
+        patterns:
+          - "com.squareup.retrofit2*"
+          - "com.squareup.okhttp3*"
+          - "com.squareup.moshi*"
+      dependency-injection:
+        patterns:
+          - "com.google.dagger*"
+          - "*hilt*"
+      database:
+        patterns:
+          - "androidx.room*"
+          - "androidx.datastore*"
+      build-tools:
+        patterns:
+          - "com.android.application*"
+          - "com.google.devtools.ksp*"
+
+  
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci-cd"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      setup-actions:
+        patterns:
+          - "actions/setup-*"
+          - "actions/checkout*"
+      build-actions:
+        patterns:
+          - "actions/upload-*"
+          - "actions/download-*"
+          - "actions/cache*"
+      security-actions:
+        patterns:
+          - "*security*"
+          - "*codeql*"
+          - "*trivy*"
