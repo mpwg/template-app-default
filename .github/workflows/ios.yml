@@ -58,10 +58,10 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild -project ios.xcodeproj -scheme Brixie  -destination "generic/platform=iOS Simulator" build
+          xcodebuild -project ios.xcodeproj -scheme ios  -destination "generic/platform=iOS Simulator" build
       - name: Run Unit Tests
         run: |
-          xcodebuild -project ios.xcodeproj -scheme Brixie  -destination "generic/platform=iOS Simulator" test
+          xcodebuild -project ios.xcodeproj -scheme ios -destination "generic/platform=iOS Simulator" test
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
