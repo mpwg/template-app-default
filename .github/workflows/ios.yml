@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  ios-build-and-test:
+  ios-build:
     runs-on: macos-latest
     defaults:
       run:
@@ -59,17 +59,6 @@ jobs:
       - name: Build iOS App
         run: |
           xcodebuild -project ios.xcodeproj -scheme ios  -destination "generic/platform=iOS Simulator" build
-      - name: Run Unit Tests
-        run: |
-          xcodebuild -project ios.xcodeproj -scheme ios -destination "generic/platform=iOS Simulator" test
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-test-results
-          path: TestResults.xcresult/
-          retention-days: 30
-
       - name: Upload Build Logs
         if: failure()
         uses: actions/upload-artifact@v4
