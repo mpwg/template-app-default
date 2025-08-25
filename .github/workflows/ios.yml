@@ -9,7 +9,9 @@ on:
 jobs:
   ios-build-and-test:
     runs-on: macos-latest
-    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ./ios
 
     steps:
       - name: Checkout Repository
