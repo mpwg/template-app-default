@@ -33,7 +33,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Cache Gradle Dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.gradle/caches
@@ -77,7 +77,7 @@ jobs:
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: android-test-results-${{ matrix.api-level }}
           path: |
@@ -87,7 +87,7 @@ jobs:
 
       - name: Upload Lint Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: android-lint-results-${{ matrix.api-level }}
           path: |
@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload APK
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: android-debug-apk-${{ matrix.api-level }}
           path: app/build/outputs/apk/debug/*.apk

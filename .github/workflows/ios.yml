@@ -35,7 +35,7 @@ jobs:
 
       - name: Cache CocoaPods
         if: hashFiles('**/Podfile.lock') != ''
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
@@ -43,7 +43,7 @@ jobs:
             ${{ runner.os }}-pods-
 
       - name: Cache Swift Package Manager
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
@@ -63,7 +63,7 @@ jobs:
           xcodebuild -project ios.xcodeproj -scheme ios  -destination "generic/platform=iOS Simulator" build
       - name: Upload Build Logs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ios-build-logs
           path: |
